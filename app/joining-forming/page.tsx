@@ -1,0 +1,128 @@
+import Link from "next/link";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { TopicIcon } from "@/components/ui/TopicIcon";
+import { ModuleLearningPath } from "@/components/path/ModuleLearningPath";
+import { learningPaths } from "@/lib/paths";
+
+const interactiveModules = [
+  {
+    title: "Clinching Simulator",
+    href: "/joining-forming/clinching",
+    description:
+      "Interactive parameter-to-video exploration for die depth, clearance, inclination, and other clinching controls",
+  },
+  {
+    title: "Tube Fit Joining Simulator",
+    href: "/joining-forming/tube-fit",
+    description:
+      "Adjust radial interference, wall thickness, expansion ratio, and material yield strength to estimate pull-out force and joint quality for forming-based tube connections",
+  },
+  {
+    title: "SPR Simulator",
+    href: "/joining-forming/spr",
+    description:
+      "Tune rivet length, die depth, die cavity diameter, rivet yield strength, and leg thickness to see their effect on interlock, bottom thickness, and joining force in self-piercing riveted joints",
+  },
+];
+
+const videoGuides = [
+  {
+    title: "Specimen Preparation Guide",
+    href: "/joining-forming/specimen-prep",
+    description:
+      "Follow SPR specimen positioning, joining, and tensile testing through the supplied process videos.",
+  },
+  {
+    title: "Measurements Guide",
+    href: "/joining-forming/measurements",
+    description:
+      "Set up the specimen and electrical measurements, configure acquisition, and record test data.",
+  },
+];
+
+const focusAreas = [
+  "Die and punch geometry influence",
+  "Material flow sensitivity to parameter bounds",
+  "Visual comparison of min and max settings",
+  "Video-based process interpretation",
+  "Radial interference and pull-out force relationship",
+  "Tube expansion and springback effects",
+  "Rivet-die interlock and bottom thickness trade-offs",
+];
+
+export default function JoiningFormingPage() {
+  return (
+    <div className="w-full pb-10">
+      <section className="relative overflow-hidden border-b border-[color:var(--border)] bg-primary/55">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(140,45,25,0.14),transparent_50%),radial-gradient(circle_at_90%_10%,rgba(247,218,211,0.42),transparent_52%)]" />
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+          <div className="mb-6 flex flex-wrap items-center gap-4">
+            <Link href="/" className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted transition-colors hover:text-accent">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+              Back to Home
+            </Link>
+            <p className="inline-flex rounded-full border border-accent/50 bg-accent/10 px-4 py-1 text-xs uppercase tracking-[0.22em] text-accent">Engineering Education</p>
+          </div>
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h1 className="font-heading text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-6xl">Joining by Forming</h1>
+              <p className="mt-4 text-lg font-medium text-accent/80">Interactive tools for clinching and forming-based joining design</p>
+            </div>
+            <div className="text-accent">
+              <TopicIcon name="joining-forming" className="h-20 w-20 sm:h-24 sm:w-24" />
+            </div>
+          </div>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
+            Follow the joining by forming path — from clinching mechanics and self-piercing riveting through seam folding to structural joint validation — using interactive simulation and calculation tools.
+          </p>
+        </div>
+      </section>
+
+      <ModuleLearningPath path={learningPaths["joining-forming"]} />
+
+      <SectionWrapper title="Interactive Modules" subtitle="Choose a forming-based application to open local simulations">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {interactiveModules.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-[0_16px_40px_rgba(48,54,44,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_rgba(140,45,25,0.14)]"
+            >
+              <h2 className="font-heading text-2xl font-semibold text-text">{item.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
+            </Link>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper title="Video Guides" subtitle="Watch the specimen preparation and measurement procedures">
+        <div className="grid gap-5 md:grid-cols-2">
+          {videoGuides.map((guide) => (
+            <Link
+              key={guide.href}
+              href={guide.href}
+              className="rounded-xl border border-[color:var(--border)] bg-white p-6 transition-colors hover:border-accent/50 hover:bg-primary/30"
+            >
+              <h2 className="font-heading text-xl font-semibold text-text">{guide.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-muted">{guide.description}</p>
+            </Link>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper title="Learning Focus" subtitle="Key skills developed by the joining-by-forming interactive content">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {focusAreas.map((area) => (
+            <article
+              key={area}
+              className="flex items-start gap-3 rounded-xl border border-[color:var(--border)] bg-white p-5 text-sm leading-7 text-muted transition-all duration-300 hover:border-accent/40 hover:bg-primary/40 hover:text-text"
+            >
+              <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-accent/70" />
+              <span>{area}</span>
+            </article>
+          ))}
+        </div>
+      </SectionWrapper>
+    </div>
+  );
+}
