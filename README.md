@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Engineering Education Platform
 
-## Getting Started
+An interactive learning platform for engineering topics in joining, materials, and technical drawing. Explore guided learning paths, visual explainers, simulations, and quizzes across five subject areas.
 
-First, run the development server:
+## Explore the Platform
+
+| Home | Phase diagrams |
+| --- | --- |
+| ![Engineering Education Platform home page](docs/screenshots/Picture1.png) | ![Interactive phase diagram learning tool](docs/screenshots/Picture2.png) |
+
+| Crystallography | Technical drawing |
+| --- | --- |
+| ![Crystallography learning tool](docs/screenshots/Picture3.png) | ![Technical drawing and projection tool](docs/screenshots/Picture4.png) |
+
+| Clinching simulator |
+| --- |
+| ![Clinching simulator](docs/screenshots/Picture5.png) |
+
+## Learning Areas
+
+- **Adhesive Bonding** — joint design, manufacturing, surface preparation, and failure analysis.
+- **Joining by Forming** — clinching, self-piercing riveting, and related forming processes.
+- **Welding** — fusion and solid-state joining concepts, with interactive learning tools.
+- **Material Science** — crystal structures, phase diagrams, and material behavior.
+- **Technical Drawing** — engineering graphics, orthographic views, and projection.
+
+The platform includes interactive visualizations and simulators, guided module paths, quizzes, and activity tracking. Learning activity and quiz scores are stored in the browser; they are not synced across devices.
+
+## Run Locally
+
+You will need Node.js and npm installed.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:5000](http://localhost:5000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Authentication Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Supabase-backed authentication is optional. To enable it, add the following values to a local `.env.local` file:
 
-## Learn More
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+Keep `.env.local` out of version control and use the credentials for your own Supabase project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Poster
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<details>
+<summary>View the STE 2026 poster</summary>
 
-## Deploy on Vercel
+![STE 2026 project poster](docs/screenshots/STE2026-Poster.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</details>
